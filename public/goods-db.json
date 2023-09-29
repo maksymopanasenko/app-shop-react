@@ -1,0 +1,72 @@
+[
+    {
+        "name": "Shirt",
+        "price": 120,
+        "urlImg": "https://i.pinimg.com/564x/09/2c/ea/092cea226bb34f26da9b051f9e8a9500.jpg",
+        "article": 1,
+        "color": "black"
+    },
+    {
+        "name": "Jeans",
+        "price": 140,
+        "urlImg": "https://i.pinimg.com/originals/f8/3f/dd/f83fdda8d3253f6a21e1b14bfa813ff1.jpg",
+        "article": 2,
+        "color": "black"
+    },
+    {
+        "name": "T-Shirt",
+        "price": 40,
+        "urlImg": "https://i.pinimg.com/originals/f8/3f/dd/f83fdda8d3253f6a21e1b14bfa813ff1.jpg",
+        "article": 3,
+        "color": "black"
+    },
+    {
+        "name": "Hoodie",
+        "price": 90,
+        "urlImg": "https://i.pinimg.com/originals/45/e9/59/45e959876a9801187350393f6859c748.jpg",
+        "article": 4,
+        "color": "black"
+    },
+    {
+        "name": "Boxers",
+        "price": 20,
+        "urlImg": "https://i.pinimg.com/564x/09/2c/ea/092cea226bb34f26da9b051f9e8a9500.jpg",
+        "article": 5,
+        "color": "black"
+    },
+    {
+        "name": "Underwear",
+        "price": 20,
+        "urlImg": "https://i.pinimg.com/originals/f8/3f/dd/f83fdda8d3253f6a21e1b14bfa813ff1.jpg",
+        "article": 6,
+        "color": "black"
+    },
+    {
+        "name": "Hat",
+        "price": 50,
+        "urlImg": "https://i.pinimg.com/originals/45/e9/59/45e959876a9801187350393f6859c748.jpg",
+        "article": 7,
+        "color": "black"
+    },
+    {
+        "name": "Sweetshirt",
+        "price": 90,
+        "urlImg": "https://i.pinimg.com/564x/09/2c/ea/092cea226bb34f26da9b051f9e8a9500.jpg",
+        "article": 8,
+        "color": "black"
+    },
+    {
+        "name": "Hat",
+        "price": 20,
+        "urlImg": "https://i.pinimg.com/originals/45/e9/59/45e959876a9801187350393f6859c748.jpg",
+        "article": 7,
+        "color": "black"
+    },
+    {
+        "name": "Sweetshirt",
+        "price": 90,
+        "urlImg": "https://i.pinimg.com/564x/09/2c/ea/092cea226bb34f26da9b051f9e8a9500.jpg",
+        "article": 8,
+        "color": "black"
+    }
+]
