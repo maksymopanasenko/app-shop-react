@@ -1,4 +1,5 @@
 import CardItem from "../CardItem/CardItem";
+import PropTypes from 'prop-types';
 import './GoodList.scss';
 
 const GoodList = ({data, onOpenFirstModal, onOpenSecondModal, favorites}) => {
@@ -8,7 +9,14 @@ const GoodList = ({data, onOpenFirstModal, onOpenSecondModal, favorites}) => {
         <ul className="goods-list">
             {cards}
         </ul>
-     );
+    );
+}
+
+GoodList.propTypes = {
+    data: PropTypes.array.isRequired,
+    onOpenFirstModal: PropTypes.func.isRequired,
+    onOpenSecondModal: PropTypes.func.isRequired,
+    favorites: PropTypes.array.isRequired
 }
  
 export default GoodList;

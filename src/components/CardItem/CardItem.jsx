@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './CardItem.scss';
 import {AiOutlineStar as Star, AiFillStar as ColoredStar} from 'react-icons/ai';
 import Button from '../Button/Button';
+import PropTypes from 'prop-types';
 
 const CardItem = ({card, onOpenFirstModal, onOpenSecondModal, favorites}) => {
     const [isHovered, setIsHovered] = useState(false);
@@ -14,7 +15,6 @@ const CardItem = ({card, onOpenFirstModal, onOpenSecondModal, favorites}) => {
     return (
         <li className="goods-item" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <div className="goods-img">
-                
                 <button className='favorite-btn' onClick={(e) => onOpenSecondModal(e, article)}>
                     {!!fav.length ? <ColoredStar /> : <Star />}
                 </button>
@@ -34,6 +34,13 @@ const CardItem = ({card, onOpenFirstModal, onOpenSecondModal, favorites}) => {
             </div>
         </li>
     );
+}
+
+CardItem.propTypes = {
+    card: PropTypes.object.isRequired,
+    onOpenFirstModal: PropTypes.func.isRequired,
+    onOpenSecondModal: PropTypes.func.isRequired,
+    favorites: PropTypes.array.isRequired
 }
  
 export default CardItem;
