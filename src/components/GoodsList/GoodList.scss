@@ -1,7 +1,10 @@
 .goods-list {
+    max-width: calc(270px * 4 + 150px);
     list-style: none;
     display: grid;
     grid-template-columns: repeat(4, 270px);
     grid-auto-rows: auto;
     gap: 50px;
+    margin: 40px auto;
+    padding: 0;
 }

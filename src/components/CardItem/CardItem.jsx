@@ -1,11 +1,12 @@
 import { useState } from 'react'
 import './CardItem.scss';
-import {AiOutlineStar as Star} from 'react-icons/ai';
+import {AiOutlineStar as Star, AiFillStar as ColoredStar} from 'react-icons/ai';
 import Button from '../Button/Button';
 
-const CardItem = ({card, onOpenModal, onOpenSecondModal}) => {
+const CardItem = ({card, onOpenFirstModal, onOpenSecondModal, favorites}) => {
     const [isHovered, setIsHovered] = useState(false);
     const {name, price, color, urlImg, article} = card;
+    const fav = favorites.filter(item => item?.article === article);
 
     const handleMouseEnter = () => setIsHovered(true);
     const handleMouseLeave = () => setIsHovered(false);
@@ -13,12 +14,15 @@ const CardItem = ({card, onOpenModal, onOpenSecondModal}) => {
     return (
         <li className="goods-item" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <div className="goods-img">
-                <Star onClick={onOpenSecondModal}/>
+                
+                <button className='favorite-btn' onClick={(e) => onOpenSecondModal(e, article)}>
+                    {!!fav.length ? <ColoredStar /> : <Star />}
+                </button>
                 <img src={urlImg} width="270" height="393" alt={name + article} />
             </div>
             <div className='goods-info'>
                 {isHovered ?
-                    (<Button text='Add to cart' onClick={onOpenModal}/>) :
+                    (<Button text='Add to cart' onClick={() => onOpenFirstModal(article)}/>) :
                     (<>
                         <p className='goods-title'>
                             {name}

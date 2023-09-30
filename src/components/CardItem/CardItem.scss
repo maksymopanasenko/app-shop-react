@@ -12,14 +12,17 @@
             border-radius: 10px;
         }
 
-        svg {
+        .favorite-btn {
             position: absolute;
             right: 10px;
             top: 10px;
             width: 30px;
             height: 30px;
-            fill: #000;
-            cursor: pointer;
+            background: #e2d4d4;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     }
 
