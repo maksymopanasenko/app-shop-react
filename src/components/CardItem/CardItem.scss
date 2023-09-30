@@ -1,7 +1,55 @@
-.goods-item {
+.goods {
+    &-item {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    &-img {
+        position: relative;
 
-    img {
-        object-fit: cover;
-        border-radius: 10px;
+        img {
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        svg {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            width: 30px;
+            height: 30px;
+            fill: #000;
+            cursor: pointer;
+        }
+    }
+
+    &-info {
+        button {
+            margin-bottom: 30px;
+        }
+    }
+
+    &-title {
+        color: #2A2F2F;
+        font-size: 20px;
+        font-weight: 700;
+        line-height: 1.56;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    &-color {
+        color: #3b3f3f;
+        font-size: 13px;
+        font-weight: 400;
+    }
+
+    &-text {
+        color: #7F7F7F;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 2;
     }
 }

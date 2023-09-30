@@ -1,0 +1,51 @@
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(41, 39, 39, 0.804);
+    
+    .modal {
+        width: 500px;
+        background-color: #BBADA8;
+        border-radius: 5px;
+        color: #fff;
+        overflow: hidden;
+        padding-bottom: 20px;   
+        position: relative;
+
+        &__header {
+            padding: 15px 50px;
+            position: relative;
+            font-size: 22px;
+            background-color: #8e7d77;
+            margin: 0;
+        }
+
+        &__text {
+            padding: 0 30px;
+            line-height: 2;
+        }
+        
+        .btn {
+            box-shadow: none;
+            width: 100px;
+            cursor: pointer;
+        }
+        
+        .close__btn {
+            position: absolute;
+            right: 2px;
+            top: 2px;
+            z-index: 5;
+            background-color: transparent;
+            border: none;
+            color: #fff;
+            cursor: pointer;
+        }
+    }
+}
