@@ -18,7 +18,7 @@ const CardItem = ({card, onOpenFirstModal, onOpenSecondModal, favorites}) => {
                 <button className='favorite-btn' onClick={(e) => onOpenSecondModal(e, article)}>
                     {!!fav.length ? <ColoredStar /> : <Star />}
                 </button>
-                <img src={urlImg} width="270" height="393" alt={name + article} />
+                <img src={urlImg} width="270" height="393" alt={name} />
             </div>
             <div className='goods-info'>
                 {isHovered ?

@@ -1,11 +1,15 @@
-import { useEffect, useState } from 'react'
-import './App.css'
-import sendRequest from './helpers/sendRequest'
-import Header from './components/Header/Header';
-import GoodList from './components/GoodsList/GoodList';
+import { useEffect, useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
+import { modalData } from './sources/dataBase';
+import sendRequest from './helpers/sendRequest';
 import Modal from './components/Modal/Modal';
 import ActionButtons from './components/ActionButtons/ActionButtons';
-import { modalData } from './sources/dataBase';
+import Shop from './pages/Shop/Shop';
+import MenShop from './pages/MenShop/MenShop';
+import WomenShop from './pages/WomenShop/WomenShop';
+import NoPage from './pages/NoPage/NoPage';
+import './App.css';
+
 
 function App() {
   const [goods, setGoods] = useState([]);
@@ -56,8 +60,13 @@ function App() {
 
   return (
     <>
-      <Header favorites={favorites} items={items}/>
-      <GoodList data={goods} onOpenFirstModal={handleToggleFirstModal} onOpenSecondModal={handleToggleSecondModal} favorites={favorites}/>
+      <Routes>
+        <Route index element={<Shop data={goods} onOpenFirstModal={handleToggleFirstModal} onOpenSecondModal={handleToggleSecondModal} favorites={favorites} items={items}/>} />
+        <Route path='/shop' element={<Shop data={goods} onOpenFirstModal={handleToggleFirstModal} onOpenSecondModal={handleToggleSecondModal} favorites={favorites} items={items}/>} />
+        <Route path='/men' element={<MenShop data={goods} onOpenFirstModal={handleToggleFirstModal} onOpenSecondModal={handleToggleSecondModal} favorites={favorites} items={items}/>} />
+        <Route path='/women' element={<WomenShop data={goods} onOpenFirstModal={handleToggleFirstModal} onOpenSecondModal={handleToggleSecondModal} favorites={favorites} items={items}/>} />
+        <Route path='*' element={<NoPage />} />
+      </Routes>
       {isOpen && (
         <Modal header={modal.header} text={modal.text} closeButton onCloseModal={handleOpenModal}>
           <ActionButtons confirmBtn='Ok' closeBtn='Cancel' increaseFav={increaseFav} increaseItem={increaseItem} modal={modal}/>
