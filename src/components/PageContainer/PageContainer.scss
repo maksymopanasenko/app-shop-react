@@ -1,0 +1,21 @@
+.page-title {
+    position: relative;
+    font-size: 32px;
+    &::after,
+    &::before {
+        content: '';
+        position: absolute;
+        background: #213547;
+        width: 170px;
+        height: 2px;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-40%);
+    }
+    &::after {
+        bottom: -14px;
+        left: unset;
+        right: 50%;
+        transform: translateX(40%);
+    }
+}

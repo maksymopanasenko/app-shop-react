@@ -8,6 +8,8 @@ import Shop from './pages/Shop/Shop';
 import MenShop from './pages/MenShop/MenShop';
 import WomenShop from './pages/WomenShop/WomenShop';
 import NoPage from './pages/NoPage/NoPage';
+import Cart from './pages/Cart/Cart';
+import Favorites from './pages/Favorites/Favorites';
 import './App.css';
 
 
@@ -19,38 +21,39 @@ function App() {
   const [items, setItems] = useState(JSON.parse(localStorage.getItem('items')) || []);
   const [currItem, setCurrItem] = useState(null);
 
-  const increaseFav = () => {
-    const favs = favorites.filter(({article}) => article === currItem.article);
-
-    if (!favs.length) {
-      localStorage.setItem('favorites', JSON.stringify([...favorites, currItem]));
-      setFavorites([...favorites, currItem]);
-    }
-  };
-
   const increaseItem = () => {
     localStorage.setItem('items', JSON.stringify([...items, currItem]));
     setItems([...items, currItem]);
   };
 
-  const handleOpenModal = () => setIsOpen(!isOpen);
+  const toggleFav = (id) => {
+    const fav = favorites.filter(({article}) => article !== id);
 
-  const handleToggleFirstModal = (id) => {
+    if (fav.length === favorites.length) {
+      const fav = goods.filter(({article}) => article === id);
+      localStorage.setItem('favorites', JSON.stringify([...favorites, ...fav]));
+      setFavorites([...favorites, ...fav]);
+    } else {
+      localStorage.setItem('favorites', JSON.stringify([...fav]));
+      setFavorites([...fav]);
+    }
+  }
+
+  const deleteItem = () => {
+    const restItems = items.filter(({article}) => article !== currItem.article);
+
+    localStorage.setItem('items', JSON.stringify([...restItems]));
+    setItems([...restItems]);
+  }
+
+  const handleCloseModal = () => setIsOpen(!isOpen);
+
+  const handleToggleModal = (modalIndex, id) => {
     setIsOpen(!isOpen);
-    setModal(modalData.firstModal);
+    setModal(modalData[modalIndex]);
 
     const item = goods.filter(item => item.article === id);
     setCurrItem(...item);
-  };
-
-  const handleToggleSecondModal = (e, id) => {
-    if (e.target || e.target.closest('.favorite-btn')) {
-      setIsOpen(!isOpen);
-      setModal(modalData.secondModal);
-      
-      const item = goods.filter(item => item.article === id);
-      setCurrItem(...item);
-    }
   };
 
   useEffect(() => {
@@ -61,15 +64,17 @@ function App() {
   return (
     <>
       <Routes>
-        <Route index element={<Shop data={goods} onOpenFirstModal={handleToggleFirstModal} onOpenSecondModal={handleToggleSecondModal} favorites={favorites} items={items}/>} />
-        <Route path='/shop' element={<Shop data={goods} onOpenFirstModal={handleToggleFirstModal} onOpenSecondModal={handleToggleSecondModal} favorites={favorites} items={items}/>} />
-        <Route path='/men' element={<MenShop data={goods} onOpenFirstModal={handleToggleFirstModal} onOpenSecondModal={handleToggleSecondModal} favorites={favorites} items={items}/>} />
-        <Route path='/women' element={<WomenShop data={goods} onOpenFirstModal={handleToggleFirstModal} onOpenSecondModal={handleToggleSecondModal} favorites={favorites} items={items}/>} />
+        <Route index element={<Shop data={goods} onToggleModal={handleToggleModal} onToggleFav={toggleFav} favorites={favorites} items={items}/>} />
+        <Route path='/shop' element={<Shop data={goods} onToggleModal={handleToggleModal} onToggleFav={toggleFav} favorites={favorites} items={items}/>} />
+        <Route path='/men' element={<MenShop data={goods} onToggleModal={handleToggleModal} onToggleFav={toggleFav} favorites={favorites} items={items}/>} />
+        <Route path='/women' element={<WomenShop data={goods} onToggleModal={handleToggleModal} onToggleFav={toggleFav} favorites={favorites} items={items}/>} />
+        <Route path='/favorites' element={<Favorites data={favorites} onToggleModal={handleToggleModal} onToggleFav={toggleFav} items={items}/>} />
+        <Route path='/cart' element={<Cart data={items} onToggleModal={handleToggleModal} favorites={favorites}/>} />
         <Route path='*' element={<NoPage />} />
       </Routes>
       {isOpen && (
-        <Modal header={modal.header} text={modal.text} closeButton onCloseModal={handleOpenModal}>
-          <ActionButtons confirmBtn='Ok' closeBtn='Cancel' increaseFav={increaseFav} increaseItem={increaseItem} modal={modal}/>
+        <Modal header={modal.header} text={modal.text} closeButton onCloseModal={handleCloseModal}>
+          <ActionButtons confirmBtn='Ok' closeBtn='Cancel' onIncreaseItem={increaseItem} onDeleteItem={deleteItem} modal={modal}/>
         </Modal>
       )}
     </>

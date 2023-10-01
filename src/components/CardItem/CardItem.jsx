@@ -4,10 +4,12 @@ import {AiOutlineStar as Star, AiFillStar as ColoredStar} from 'react-icons/ai';
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 
-const CardItem = ({card, onOpenFirstModal, onOpenSecondModal, favorites}) => {
+const CardItem = ({card, onToggleModal, onToggleFav, favorites, inCart}) => {
     const [isHovered, setIsHovered] = useState(false);
     const {name, price, color, urlImg, article} = card;
     const fav = favorites.filter(item => item?.article === article);
+
+    const cardBtn = inCart ? <Button text='Delete' onClick={() => onToggleModal(1, article)}/> : <Button text='Add to cart' onClick={() => onToggleModal(0, article)}/>
 
     const handleMouseEnter = () => setIsHovered(true);
     const handleMouseLeave = () => setIsHovered(false);
@@ -15,14 +17,16 @@ const CardItem = ({card, onOpenFirstModal, onOpenSecondModal, favorites}) => {
     return (
         <li className="goods-item" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <div className="goods-img">
-                <button className='favorite-btn' onClick={(e) => onOpenSecondModal(e, article)}>
-                    {!!fav.length ? <ColoredStar /> : <Star />}
-                </button>
+                {!inCart && (
+                    <button className='favorite-btn' onClick={() => onToggleFav(article)}>
+                        {!!fav.length ? <ColoredStar /> : <Star />}
+                    </button>
+                )}
                 <img src={urlImg} width="270" height="393" alt={name} />
             </div>
             <div className='goods-info'>
                 {isHovered ?
-                    (<Button text='Add to cart' onClick={() => onOpenFirstModal(article)}/>) :
+                    cardBtn :
                     (<>
                         <p className='goods-title'>
                             {name}
@@ -38,8 +42,7 @@ const CardItem = ({card, onOpenFirstModal, onOpenSecondModal, favorites}) => {
 
 CardItem.propTypes = {
     card: PropTypes.object.isRequired,
-    onOpenFirstModal: PropTypes.func.isRequired,
-    onOpenSecondModal: PropTypes.func.isRequired,
+    // onToggleModal: PropTypes.func,
     favorites: PropTypes.array.isRequired
 }
  

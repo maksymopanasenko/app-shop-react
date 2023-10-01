@@ -2,20 +2,27 @@ import CardItem from "../CardItem/CardItem";
 import PropTypes from 'prop-types';
 import './GoodList.scss';
 
-const GoodList = ({data, onOpenFirstModal, onOpenSecondModal, favorites}) => {
-    const cards = data?.map(card => <CardItem key={card.article} card={card} onOpenFirstModal={onOpenFirstModal} onOpenSecondModal={onOpenSecondModal} favorites={favorites}/>);
+const GoodList = ({data, onToggleModal, onToggleFav, favorites, inCart}) => {
+    const cards = data?.map(card => <CardItem key={card.article} card={card} onToggleModal={onToggleModal} onToggleFav={onToggleFav} favorites={favorites} inCart={inCart}/>);
 
     return ( 
-        <ul className="goods-list">
-            {cards}
-        </ul>
+        <>
+            {cards.length ? (
+                <ul className="goods-list">
+                    {cards}
+                </ul>
+            ) : (
+                <div className="no-items">
+                    <p>No items have been added.</p>
+                </div>
+            )}
+        </>
     );
 }
 
 GoodList.propTypes = {
     data: PropTypes.array.isRequired,
-    onOpenFirstModal: PropTypes.func.isRequired,
-    onOpenSecondModal: PropTypes.func.isRequired,
+    onToggleModal: PropTypes.func,
     favorites: PropTypes.array.isRequired
 }
  

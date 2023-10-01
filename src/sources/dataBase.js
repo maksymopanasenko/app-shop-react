@@ -1,22 +1,12 @@
-export const modalData = {
-    firstModal: {
-      id: 1,
+export const modalData = [
+    {
       header: 'Do you want to add the product to the cart?',
-      text: 'Once you delete this file, it won’t be possible to undo this action. Are you sure you want to delete it?',
-      backgroundColor: '#b53726',
-      btns: {
-        first: 'Ok',
-        second: 'Cancel'
-      }
+      text: 'After adding a product, you can find it in your shopping cart.',
+      backgroundColor: '#b53726'
     },
-    secondModal: {
-      id: 2,
-      header: 'Do you want to add the product to your favorites?',
-      text: 'Once you add a product to your favorites, you can view it later at any time!',
-      backgroundColor: '#ff9100',
-      btns: {
-        first: 'Undo',
-        second: 'Close'
-      }
+    {
+      header: 'Do you want to remove the product from the cart?',
+      text: 'This action will remove this product from the shopping cart.',
+      backgroundColor: '#ff9100'
     }
-}
+  ]

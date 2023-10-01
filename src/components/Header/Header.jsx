@@ -3,6 +3,7 @@ import { AiOutlineHeart as Heart } from 'react-icons/ai';
 import './Header.scss';
 import CustomerButton from '../CustomerButton/CustomerButton';
 import Navigation from '../Navigation/Navigation';
+import { Link } from 'react-router-dom';
 
 const Header = ({items, favorites}) => {
     return (
@@ -11,12 +12,16 @@ const Header = ({items, favorites}) => {
                 <div className="header-body">
                     <Navigation />
                     <div className="customer-btns">
-                        <CustomerButton mark={favorites}>
-                            <Heart />
-                        </CustomerButton>
-                        <CustomerButton mark={items}>
-                            <Cart />
-                        </CustomerButton>
+                        <Link to='/favorites'>
+                            <CustomerButton mark={favorites}>
+                                <Heart />
+                            </CustomerButton>
+                        </Link>
+                        <Link to='/cart'>
+                            <CustomerButton mark={items}>
+                                <Cart />
+                            </CustomerButton>
+                        </Link>
                     </div>
                 </div>
             </div>
