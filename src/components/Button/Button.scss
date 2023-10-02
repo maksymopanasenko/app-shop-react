@@ -3,4 +3,10 @@
     border: none;
     border-radius: 5px;
     color: #fff;
+    background: #564356;
+    transition: .3s;
+
+    &:hover {
+        background: #3d2f3d;
+    }
 }

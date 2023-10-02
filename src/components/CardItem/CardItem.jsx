@@ -4,12 +4,10 @@ import {AiOutlineStar as Star, AiFillStar as ColoredStar} from 'react-icons/ai';
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 
-const CardItem = ({card, onToggleModal, onToggleFav, favorites, inCart}) => {
+const CardItem = ({card, onToggleModal, onToggleFav, favorites}) => {
     const [isHovered, setIsHovered] = useState(false);
     const {name, price, color, urlImg, article} = card;
     const fav = favorites.filter(item => item?.article === article);
-
-    const cardBtn = inCart ? <Button text='Delete' onClick={() => onToggleModal(1, article)}/> : <Button text='Add to cart' onClick={() => onToggleModal(0, article)}/>
 
     const handleMouseEnter = () => setIsHovered(true);
     const handleMouseLeave = () => setIsHovered(false);
@@ -17,16 +15,14 @@ const CardItem = ({card, onToggleModal, onToggleFav, favorites, inCart}) => {
     return (
         <li className="goods-item" onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
             <div className="goods-img">
-                {!inCart && (
-                    <button className='favorite-btn' onClick={() => onToggleFav(article)}>
-                        {!!fav.length ? <ColoredStar /> : <Star />}
-                    </button>
-                )}
+                <button className='favorite-btn' onClick={() => onToggleFav(article)}>
+                    {!!fav.length ? <ColoredStar /> : <Star />}
+                </button>
                 <img src={urlImg} width="270" height="393" alt={name} />
             </div>
             <div className='goods-info'>
                 {isHovered ?
-                    cardBtn :
+                    <Button text='Add to cart' onClick={() => onToggleModal(0, article)}/> :
                     (<>
                         <p className='goods-title'>
                             {name}
@@ -42,7 +38,6 @@ const CardItem = ({card, onToggleModal, onToggleFav, favorites, inCart}) => {
 
 CardItem.propTypes = {
     card: PropTypes.object.isRequired,
-    // onToggleModal: PropTypes.func,
     favorites: PropTypes.array.isRequired
 }
  

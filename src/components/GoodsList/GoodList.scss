@@ -1,20 +1,23 @@
+.list {
+    margin: 70px auto;
+    list-style: none;
+    padding: 0;
+}
+
+.container-cart.container-cart {
+    max-width: 700px;
+}
+
 .goods-list {
     max-width: calc(270px * 4 + 150px);
-    min-height: 530px;
-    list-style: none;
     display: grid;
     grid-template-columns: repeat(4, 270px);
     grid-auto-rows: auto;
     gap: 50px;
-    margin: 70px auto;
 }
 
 .no-items {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100%;
+    padding-top: 100px;
     p {
         font-size: 30px;
     }

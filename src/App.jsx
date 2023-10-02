@@ -22,9 +22,17 @@ function App() {
   const [currItem, setCurrItem] = useState(null);
 
   const increaseItem = () => {
+    console.log(currItem);
     localStorage.setItem('items', JSON.stringify([...items, currItem]));
     setItems([...items, currItem]);
   };
+  
+  const deleteItem = () => {
+    const restItems = items.filter(({article}) => article !== currItem.article);
+
+    localStorage.setItem('items', JSON.stringify([...restItems]));
+    setItems([...restItems]);
+  }
 
   const toggleFav = (id) => {
     const fav = favorites.filter(({article}) => article !== id);
@@ -37,13 +45,6 @@ function App() {
       localStorage.setItem('favorites', JSON.stringify([...fav]));
       setFavorites([...fav]);
     }
-  }
-
-  const deleteItem = () => {
-    const restItems = items.filter(({article}) => article !== currItem.article);
-
-    localStorage.setItem('items', JSON.stringify([...restItems]));
-    setItems([...restItems]);
   }
 
   const handleCloseModal = () => setIsOpen(!isOpen);
@@ -65,11 +66,11 @@ function App() {
     <>
       <Routes>
         <Route index element={<Shop data={goods} onToggleModal={handleToggleModal} onToggleFav={toggleFav} favorites={favorites} items={items}/>} />
-        <Route path='/shop' element={<Shop data={goods} onToggleModal={handleToggleModal} onToggleFav={toggleFav} favorites={favorites} items={items}/>} />
-        <Route path='/men' element={<MenShop data={goods} onToggleModal={handleToggleModal} onToggleFav={toggleFav} favorites={favorites} items={items}/>} />
-        <Route path='/women' element={<WomenShop data={goods} onToggleModal={handleToggleModal} onToggleFav={toggleFav} favorites={favorites} items={items}/>} />
-        <Route path='/favorites' element={<Favorites data={favorites} onToggleModal={handleToggleModal} onToggleFav={toggleFav} items={items}/>} />
-        <Route path='/cart' element={<Cart data={items} onToggleModal={handleToggleModal} favorites={favorites}/>} />
+        <Route path='/shop' element={<Shop data={goods} onToggleModal={handleToggleModal} onToggleFav={toggleFav} favorites={favorites} items={items} />} />
+        <Route path='/men' element={<MenShop data={goods} onToggleModal={handleToggleModal} onToggleFav={toggleFav} favorites={favorites} items={items} />} />
+        <Route path='/women' element={<WomenShop data={goods} onToggleModal={handleToggleModal} onToggleFav={toggleFav} favorites={favorites} items={items} />} />
+        <Route path='/favorites' element={<Favorites data={favorites} onToggleModal={handleToggleModal} onToggleFav={toggleFav} items={items} />} />
+        <Route path='/cart' element={<Cart data={items} onToggleModal={handleToggleModal} favorites={favorites} />} />
         <Route path='*' element={<NoPage />} />
       </Routes>
       {isOpen && (

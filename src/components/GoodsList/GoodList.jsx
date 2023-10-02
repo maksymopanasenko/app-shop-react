@@ -1,14 +1,14 @@
-import CardItem from "../CardItem/CardItem";
 import PropTypes from 'prop-types';
+import cn from 'classnames';
 import './GoodList.scss';
 
-const GoodList = ({data, onToggleModal, onToggleFav, favorites, inCart}) => {
-    const cards = data?.map(card => <CardItem key={card.article} card={card} onToggleModal={onToggleModal} onToggleFav={onToggleFav} favorites={favorites} inCart={inCart}/>);
+const GoodList = ({data, onToggleModal, onToggleFav, favorites, RenderItemComponent, inCart}) => {
+    const cards = data?.map(card => <RenderItemComponent key={card.article} card={card} onToggleModal={onToggleModal} onToggleFav={onToggleFav} favorites={favorites}/>);
 
     return ( 
-        <>
+        <div className={cn('container', {"container-cart": inCart})}>
             {cards.length ? (
-                <ul className="goods-list">
+                <ul className={cn('list', {"goods-list": !inCart})}>
                     {cards}
                 </ul>
             ) : (
@@ -16,7 +16,7 @@ const GoodList = ({data, onToggleModal, onToggleFav, favorites, inCart}) => {
                     <p>No items have been added.</p>
                 </div>
             )}
-        </>
+        </div>
     );
 }
 
