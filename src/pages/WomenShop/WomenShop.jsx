@@ -6,7 +6,7 @@ const MenShop = ( {data, onToggleModal, onToggleFav, favorites, items}) => {
     const filteredData = data.filter(({sex}) => sex === 'W');
     return (
         <PageContainer favorites={favorites} items={items}>
-            <GoodList data={filteredData} onToggleModal={onToggleModal} onToggleFav={onToggleFav} favorites={favorites} RenderItemComponent={CardItem}/>
+            <GoodList data={filteredData} onToggleModal={onToggleModal} onToggleFav={onToggleFav} favorites={favorites} items={items} RenderItemComponent={CardItem}/>
         </PageContainer>
     )
 }

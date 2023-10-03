@@ -48,5 +48,11 @@
             color: #fff;
             cursor: pointer;
         }
+        
+        &__btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
     }
 }

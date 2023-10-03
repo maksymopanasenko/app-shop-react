@@ -17,7 +17,9 @@ function Modal({header, text, closeButton, onCloseModal, children}) {
                 {closeButton && <button className='close__btn'><CloseBtn /></button>}
                 <h2 className='modal__header'>{header}</h2>
                 <p className='modal__text'>{text}</p>
-                {children}
+                <div className="modal__btns">
+                    {children}
+                </div>
             </div>
         </div>
     );

@@ -17,7 +17,7 @@ const CartItem = ({card, onToggleModal}) => {
                 <span className='cart-price'>{price + ' PLN'}</span>
             </div>
             
-            <Button text='Delete' onClick={() => onToggleModal(1, article)}/>
+            <Button text='Delete' onClick={() => onToggleModal(2, article)}/>
         </li>
     );
 }

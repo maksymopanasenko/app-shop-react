@@ -5,7 +5,7 @@ import PageContainer from '../../components/PageContainer/PageContainer';
 const Shop = ({data, onToggleModal, onToggleFav, favorites, items}) => {
     return (
         <PageContainer favorites={favorites} items={items}>
-            <GoodList data={data} onToggleModal={onToggleModal} onToggleFav={onToggleFav} favorites={favorites} RenderItemComponent={CardItem}/>
+            <GoodList data={data} onToggleModal={onToggleModal} onToggleFav={onToggleFav} favorites={favorites} items={items} RenderItemComponent={CardItem}/>
         </PageContainer>
     );
 }

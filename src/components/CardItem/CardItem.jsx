@@ -4,10 +4,14 @@ import {AiOutlineStar as Star, AiFillStar as ColoredStar} from 'react-icons/ai';
 import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 
-const CardItem = ({card, onToggleModal, onToggleFav, favorites}) => {
+const CardItem = ({card, onToggleModal, onToggleFav, favorites, items}) => {
     const [isHovered, setIsHovered] = useState(false);
     const {name, price, color, urlImg, article} = card;
     const fav = favorites.filter(item => item?.article === article);
+    const item = items.filter(item => item.article === article);
+
+    const modalId = item.length ? 3 : 1;
+    console.log(modalId);
 
     const handleMouseEnter = () => setIsHovered(true);
     const handleMouseLeave = () => setIsHovered(false);
@@ -22,7 +26,7 @@ const CardItem = ({card, onToggleModal, onToggleFav, favorites}) => {
             </div>
             <div className='goods-info'>
                 {isHovered ?
-                    <Button text='Add to cart' onClick={() => onToggleModal(0, article)}/> :
+                    <Button text='Add to cart' onClick={() => onToggleModal(modalId, article)}/> :
                     (<>
                         <p className='goods-title'>
                             {name}
