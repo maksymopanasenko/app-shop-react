@@ -1,6 +1,6 @@
 import './Navigation.scss';
 import logo from '../../sources/img/logo.png';
-import { Link, Outlet, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 
 const Navigation = () => {
@@ -14,7 +14,7 @@ const Navigation = () => {
                 </Link>
                 <ul className="nav-list">
                     <li>
-                        <Link to="/shop" className={cn('nav-link', {active: pathname === '/shop' || pathname === '/'})}>Shop</Link>
+                        <Link to="/" className={cn('nav-link', {active: pathname === '/'})}>Shop</Link>
                     </li>
                     <li>
                         <Link to="/men" className={cn('nav-link', {active: pathname === '/men'})}>Men</Link>
@@ -24,8 +24,6 @@ const Navigation = () => {
                     </li>
                 </ul>
             </nav>
-
-            <Outlet />
         </>
      );
 }

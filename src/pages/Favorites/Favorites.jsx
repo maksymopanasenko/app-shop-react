@@ -1,13 +1,15 @@
 import GoodList from '../../components/GoodsList/GoodList';
-import PageContainer from '../../components/PageContainer/PageContainer';
 import CardItem from '../../components/CardItem/CardItem';
+import { useOutletContext } from 'react-router-dom';
 
-const Favorites = ({data, onToggleModal, onToggleFav, items}) => {
+const Favorites = () => {
+    const {favorites, handleToggleModal, toggleFav, items} = useOutletContext();
+
     return (
-        <PageContainer favorites={data} items={items}>
+        <>
             <h2 className='page-title'>Favorites</h2>
-            <GoodList data={data} onToggleModal={onToggleModal} onToggleFav={onToggleFav} favorites={data} items={items} RenderItemComponent={CardItem}/>
-        </PageContainer>
+            <GoodList data={favorites} onToggleModal={handleToggleModal} onToggleFav={toggleFav} favorites={favorites} items={items} RenderItemComponent={CardItem}/>
+        </>
     );
 }
  

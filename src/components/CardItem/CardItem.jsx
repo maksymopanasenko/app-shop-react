@@ -11,7 +11,6 @@ const CardItem = ({card, onToggleModal, onToggleFav, favorites, items}) => {
     const item = items.filter(item => item.article === article);
 
     const modalId = item.length ? 3 : 1;
-    console.log(modalId);
 
     const handleMouseEnter = () => setIsHovered(true);
     const handleMouseLeave = () => setIsHovered(false);
