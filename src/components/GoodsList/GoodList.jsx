@@ -23,7 +23,6 @@ const GoodList = ({data, onToggleModal, onToggleFav, favorites, items, RenderIte
 GoodList.propTypes = {
     data: PropTypes.array.isRequired,
     onToggleModal: PropTypes.func,
-    favorites: PropTypes.array.isRequired
 }
  
 export default GoodList;

@@ -4,25 +4,33 @@ import Header from "../../components/Header/Header";
 import Modal from "../../components/Modal/Modal";
 import Button from "../../components/Button/Button";
 import { modalData } from "../../sources/dataBase";
-import sendRequest from "../../helpers/sendRequest";
+import { useDispatch, useSelector } from "react-redux";
+import fetchGoods from "../../asyncActions/goods";
+import { addFavoriteAC, removeFavoriteAC } from "../../store/favs.reducer";
+import { addItemAC, removeItemAC } from "../../store/items.reducer";
+import { setFavorites } from "../../asyncActions/favorites";
+import { setItems } from "../../asyncActions/items";
+
 import './Layout.scss';
 
 const Layout = () => {
-    const [goods, setGoods] = useState([]);
     const [isOpen, setIsOpen] = useState(false);
     const [modal, setModal] = useState({});
-    const [favorites, setFavorites] = useState([]);
-    const [items, setItems] = useState([]);
     const [currItem, setCurrItem] = useState(null);
-  
-    const increaseItem = () => {
+    const goods = useSelector(store => store.goods.goods);
+    const favorites = useSelector(store => store.favorites.favorites);
+    const items = useSelector(store => store.items.items);
+    const dispatch = useDispatch();
+
+    const addItem = () => {
       const itemInCart = items.find(item => item.article === currItem.article);
   
       if (itemInCart) return;
   
       const itemsKeys = items.map(item => item.article);
       localStorage.setItem('items', JSON.stringify([...itemsKeys, currItem.article]));
-      setItems([...items, currItem]);
+      
+      dispatch(addItemAC(currItem))
     };
     
     const deleteItem = () => {
@@ -30,7 +38,7 @@ const Layout = () => {
       const restItemsKeys = restItems.map(item => item.article);
   
       localStorage.setItem('items', JSON.stringify([...restItemsKeys]));
-      setItems([...restItems]);
+      dispatch(removeItemAC(currItem.article))
     }
   
     const toggleFav = (id) => {
@@ -40,11 +48,11 @@ const Layout = () => {
       if (fav.length === favorites.length) {
         const favItem = goods.find(({article}) => article === id);
         
-        localStorage.setItem('favorites', JSON.stringify([...favKeys, favItem.article]));
-        setFavorites([...favorites, favItem]);
+        localStorage.setItem('favorites', JSON.stringify([...favKeys, favItem.article]));  
+        dispatch(addFavoriteAC(favItem))
       } else {
         localStorage.setItem('favorites', JSON.stringify([...favKeys]));
-        setFavorites([...fav]);
+        dispatch(removeFavoriteAC(id))
       }
     }
   
@@ -59,22 +67,15 @@ const Layout = () => {
       const item = goods.find(item => item.article === id);
       setCurrItem(item);
     };
-  
+
     useEffect(() => {
-      sendRequest('./goods-db.json')
-        .then(data => {
-          setGoods(data);
-  
-          const storageFavData = JSON.parse(localStorage.getItem('favorites')) || [];
-          const favs = data.filter(({article}) => storageFavData.includes(article));
-  
-          setFavorites([...favs]);
-  
-          const storageItemData = JSON.parse(localStorage.getItem('items')) || [];
-          const items = data.filter(({article}) => storageItemData.includes(article));
-          setItems([...items]);
-        });
+      dispatch(fetchGoods());
     }, []);
+
+    useEffect(() => {
+      dispatch(setFavorites(goods));
+      dispatch(setItems(goods));
+    }, [goods]);
 
     return ( 
         <>
@@ -86,7 +87,7 @@ const Layout = () => {
           
           {isOpen && (
               <Modal header={modal.header} text={modal.text} closeButton onCloseModal={handleCloseModal}>
-                  <Button text="Ok" onClick={modal.id !== 2 ? increaseItem : deleteItem}/>
+                  <Button text="Ok" onClick={modal.id !== 2 ? addItem : deleteItem}/>
                   {modal.id !== 3 && <Button text="Cancel"/>}
               </Modal>
           )}
