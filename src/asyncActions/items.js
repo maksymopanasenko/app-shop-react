@@ -1,4 +1,4 @@
-import { addItemsAC } from "../store/items.reducer";
+import { addItemsAC } from "../store/reducers/items.reducer";
 
 export const setItems = (goods) => {
     return dispatch => {

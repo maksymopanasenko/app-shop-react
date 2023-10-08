@@ -1,4 +1,4 @@
-import { addFavsAC } from "../store/favs.reducer";
+import { addFavsAC } from "../store/reducers/favs.reducer";
 
 export const setFavorites = (goods) => {
     return dispatch => {

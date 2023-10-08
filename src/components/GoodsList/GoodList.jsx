@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 import './GoodList.scss';
 
-const GoodList = ({data, onToggleModal, onToggleFav, favorites, items, RenderItemComponent, inCart}) => {
-    const cards = data?.map(card => <RenderItemComponent key={card.article} card={card} onToggleModal={onToggleModal} onToggleFav={onToggleFav} favorites={favorites} items={items}/>);
+const GoodList = ({data, RenderItemComponent, inCart}) => {
+    const cards = data?.map(card => <RenderItemComponent key={card.article} card={card} />);
 
-    return ( 
+    return (
         <div className={cn('container', {"container-cart": inCart})}>
             {cards.length ? (
                 <ul className={cn('list', {"goods-list": !inCart})}>
@@ -22,7 +22,7 @@ const GoodList = ({data, onToggleModal, onToggleFav, favorites, items, RenderIte
 
 GoodList.propTypes = {
     data: PropTypes.array.isRequired,
-    onToggleModal: PropTypes.func,
+    RenderItemComponent: PropTypes.element.isRequired
 }
  
 export default GoodList;

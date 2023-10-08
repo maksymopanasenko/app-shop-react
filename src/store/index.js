@@ -1,14 +1,18 @@
 import { composeWithDevTools } from "@redux-devtools/extension"
 import { applyMiddleware, combineReducers, createStore } from "redux"
-import goodsReducer from "./goods.reducer";
 import thunk from "redux-thunk";
-import favsReducer from "./favs.reducer";
-import itemsReducer from "./items.reducer";
+import goodsReducer from "./reducers/goods.reducer";
+import favsReducer from "./reducers/favs.reducer";
+import itemsReducer from "./reducers/items.reducer";
+import currentItemReducer from "./reducers/currentItem.reducer";
+import modalReducer from "./reducers/modal.reducer";
 
 const rootReducer = combineReducers({
     goods: goodsReducer,
     favorites: favsReducer,
-    items: itemsReducer
+    items: itemsReducer,
+    modal: modalReducer,
+    currItem: currentItemReducer
 });
 
 export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));

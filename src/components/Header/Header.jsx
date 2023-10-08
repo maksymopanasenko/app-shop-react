@@ -1,11 +1,15 @@
 import { PiShoppingCartSimple as Cart } from 'react-icons/pi';
 import { AiOutlineHeart as Heart } from 'react-icons/ai';
-import './Header.scss';
 import CustomerButton from '../CustomerButton/CustomerButton';
 import Navigation from '../Navigation/Navigation';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import './Header.scss';
 
-const Header = ({items, favorites}) => {
+const Header = () => {
+    const items = useSelector(state => state.items.items);
+    const favorites = useSelector(state => state.favorites.favorites);
+
     return (
         <header className='header'>
             <div className="container">
@@ -13,12 +17,12 @@ const Header = ({items, favorites}) => {
                     <Navigation />
                     <div className="customer-btns">
                         <Link to='/favorites'>
-                            <CustomerButton mark={favorites}>
+                            <CustomerButton quantity={favorites.length}>
                                 <Heart />
                             </CustomerButton>
                         </Link>
                         <Link to='/cart'>
-                            <CustomerButton mark={items}>
+                            <CustomerButton quantity={items.length}>
                                 <Cart />
                             </CustomerButton>
                         </Link>

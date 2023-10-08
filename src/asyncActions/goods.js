@@ -1,5 +1,5 @@
 import sendRequest from "../helpers/sendRequest";
-import { addGoodsAC } from "../store/goods.reducer";
+import { addGoodsAC } from "../store/reducers/goods.reducer";
 
 const fetchGoods = () => {
     return dispatch => {

@@ -1,14 +1,14 @@
 import GoodList from '../../components/GoodsList/GoodList';
 import CardItem from '../../components/CardItem/CardItem';
-import { useOutletContext } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const Favorites = () => {
-    const {favorites, handleToggleModal, toggleFav, items} = useOutletContext();
+    const favorites = useSelector(state => state.favorites.favorites);
 
     return (
         <>
             <h2 className='page-title'>Favorites</h2>
-            <GoodList data={favorites} onToggleModal={handleToggleModal} onToggleFav={toggleFav} favorites={favorites} items={items} RenderItemComponent={CardItem}/>
+            <GoodList data={favorites} RenderItemComponent={CardItem}/>
         </>
     );
 }

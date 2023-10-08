@@ -1,17 +1,17 @@
 import './CustomerButton.scss';
 import PropTypes from 'prop-types';
 
-const CustomerButton = ({children, mark}) => {
+const CustomerButton = ({children, quantity}) => {
     return (
         <button className='customer-btn'>
             {children}
-            {!!mark.length && (<span>{mark.length}</span>)}
+            {!!quantity && (<span>{quantity}</span>)}
         </button>
     );
 }
 
 CustomerButton.propTypes = {
-    mark: PropTypes.array,
+    quantity: PropTypes.number,
     children: PropTypes.element
 }
  

@@ -1,15 +1,16 @@
 import GoodList from "../../components/GoodsList/GoodList";
 import CardItem from '../../components/CardItem/CardItem';
-import { useLocation, useOutletContext } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import filterData from "../../helpers/filterData";
+import { useSelector } from "react-redux";
 
 const Category = () => {
-    const {goods, handleToggleModal, toggleFav, favorites, items} = useOutletContext();
+    const goods = useSelector(state => state.goods.goods);
     const {pathname} = useLocation();
 
     const filteredData = filterData(pathname, goods);
 
-    return <GoodList data={filteredData || goods} onToggleModal={handleToggleModal} onToggleFav={toggleFav} favorites={favorites} items={items} RenderItemComponent={CardItem}/>
+    return <GoodList data={filteredData || goods} RenderItemComponent={CardItem}/>
 }
  
 export default Category;
