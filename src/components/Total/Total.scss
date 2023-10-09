@@ -1,0 +1,28 @@
+.total {
+    position: sticky;
+    bottom: 0;
+    height: 100px;
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #8e7d77e8;
+    color: #2A2F2F;
+    &-price {
+        font-size: 25px;
+        font-weight: 500;
+        margin: 0;
+    }
+    &-value {
+        font-weight: 900;
+        font-size: 32px;
+        padding-left: 10px;
+    }
+    &-shipment {
+        margin: 0;
+    }
+}
+
+.text-content {
+    text-align: left;
+}

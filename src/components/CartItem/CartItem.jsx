@@ -22,7 +22,7 @@ const CartItem = ({card}) => {
     return (
         <li className="cart-item">
             <div className="cart-info">
-                <img src={urlImg} width="120" height="160" alt={name} />
+                <img src={urlImg} width="80" height="120" alt={name} />
                 
                 <p className='cart-title'>
                     <span className='cart-item-name'>{name}</span>

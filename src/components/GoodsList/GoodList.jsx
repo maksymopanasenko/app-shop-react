@@ -6,7 +6,7 @@ const GoodList = ({data, RenderItemComponent, inCart}) => {
     const cards = data?.map(card => <RenderItemComponent key={card.article} card={card} />);
 
     return (
-        <div className={cn('container', {"container-cart": inCart})}>
+        <>
             {cards.length ? (
                 <ul className={cn('list', {"goods-list": !inCart})}>
                     {cards}
@@ -16,13 +16,12 @@ const GoodList = ({data, RenderItemComponent, inCart}) => {
                     <p>No items have been added.</p>
                 </div>
             )}
-        </div>
+        </>
     );
 }
 
 GoodList.propTypes = {
-    data: PropTypes.array.isRequired,
-    RenderItemComponent: PropTypes.element.isRequired
+    data: PropTypes.array.isRequired
 }
  
 export default GoodList;

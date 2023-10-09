@@ -6,13 +6,15 @@ import favsReducer from "./reducers/favs.reducer";
 import itemsReducer from "./reducers/items.reducer";
 import currentItemReducer from "./reducers/currentItem.reducer";
 import modalReducer from "./reducers/modal.reducer";
+import totalReducer from "./reducers/totalPrice.reducer";
 
 const rootReducer = combineReducers({
     goods: goodsReducer,
     favorites: favsReducer,
     items: itemsReducer,
     modal: modalReducer,
-    currItem: currentItemReducer
+    currItem: currentItemReducer,
+    totalPrice: totalReducer
 });
 
 export const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)));
