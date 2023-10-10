@@ -10,15 +10,19 @@ import { setFavorites } from "../../asyncActions/favorites";
 import { setItems } from "../../asyncActions/items";
 import { createPortal } from "react-dom";
 import cn from 'classnames';
+import { updateTotalPrice } from "../../asyncActions/totalPrice";
+
 import './Layout.scss';
-import { decreaseTotalAC, increaseTotalsAC } from "../../store/reducers/totalPrice.reducer";
+import Overlay from "../../components/Overlay/Overlay";
+import CheckoutForm from "../../components/Form/Form";
 
 const Layout = () => {
     const isOpen = useSelector(state => state.modal.isOpen);
-    const modal = useSelector(store => store.modal.modal);
-    const currItem = useSelector(store => store.currItem.currItem);
-    const goods = useSelector(store => store.goods.goods);
-    const items = useSelector(store => store.items.items);
+    const modal = useSelector(state => state.modal.modal);
+    const currItem = useSelector(state => state.currItem.currItem);
+    const goods = useSelector(state => state.goods.goods);
+    const items = useSelector(state => state.items.items);
+    const checkout = useSelector(state => state.modal.isCheckout);
     const {pathname} = useLocation();
     const dispatch = useDispatch();
 
@@ -27,11 +31,10 @@ const Layout = () => {
   
       if (itemInCart) return;
 
-      const itemsKeys = JSON.parse(localStorage.getItem('items'));
+      const itemsKeys = JSON.parse(localStorage.getItem('items')) || [];
       localStorage.setItem('items', JSON.stringify([...itemsKeys, currItem.article]));
       
       dispatch(addItemAC(currItem));
-      dispatch(increaseTotalsAC(currItem.price));
     };
     
     const deleteItem = () => {
@@ -40,7 +43,6 @@ const Layout = () => {
   
       localStorage.setItem('items', JSON.stringify([...restItemsKeys]));
       dispatch(removeItemAC(currItem.article));
-      dispatch(decreaseTotalAC(currItem.price));
     }
 
     useEffect(() => {
@@ -49,8 +51,12 @@ const Layout = () => {
 
     useEffect(() => {
       dispatch(setFavorites(goods));
-      dispatch(setItems(goods));
+      dispatch( setItems(goods));
     }, [goods]);
+
+    useEffect(() => {
+      dispatch(updateTotalPrice(items));
+    }, [items]);
 
     return ( 
         <>
@@ -63,10 +69,16 @@ const Layout = () => {
           </main>
 
           {isOpen && createPortal(
-              (<Modal header={modal.header} text={modal.text} >
-                  <Button text="Ok" onClick={modal.id !== 2 ? addItem : deleteItem}/>
-                  {modal.id !== 3 && <Button text="Cancel"/>}
-              </Modal>),
+              <Overlay>
+                {
+                  checkout ?
+                  <CheckoutForm /> :
+                  (<Modal header={modal.header} text={modal.text} >
+                    <Button text="Ok" onClick={modal.id !== 2 ? addItem : deleteItem}/>
+                    {modal.id !== 3 && <Button text="Cancel"/>}
+                  </Modal>)
+                }
+              </Overlay>,
               document.body
           )}
         </>

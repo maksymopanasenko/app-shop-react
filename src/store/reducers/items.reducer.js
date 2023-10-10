@@ -5,6 +5,7 @@ const initialState = {
 const ADD_ITEMS = "ADD_ITEMS";
 const ADD_ITEM = "ADD_ITEM";
 const REMOVE_ITEM = "REMOVE_ITEM";
+const CLEAR_CART = "CLEAR_CART";
 
 const itemsReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -14,6 +15,8 @@ const itemsReducer = (state = initialState, action) => {
             return {...state, items: [...state.items, action.payload]}
         case REMOVE_ITEM:
             return {...state, items: state.items.filter(({article}) => article !== action.payload)}
+        case CLEAR_CART:
+            return {...state, items: []}
         default:
             return state;
     }
@@ -38,6 +41,12 @@ export const removeItemAC = (id) => {
     return {
         type: REMOVE_ITEM,
         payload: id
+    }
+}
+
+export const clearCartAC = () => {
+    return {
+        type: CLEAR_CART
     }
 }
 

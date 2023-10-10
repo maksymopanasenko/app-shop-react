@@ -2,31 +2,20 @@ const initialState = {
     price: 0
 }
 
-const INCREASE = "INCREASE"
-const DECREASE = "DECREASE"
+const UPDATE_PRICE = "UPDATE_PRICE"
 
 const totalReducer = (state = initialState, action) => {
     switch (action.type) {
-        case INCREASE:
-            return {...state, price: state.price + action.payload}
-        case DECREASE:
-            return {...state, price: state.price - action.payload}
+        case UPDATE_PRICE:
+            return {...state, price: action.payload}
         default:
             return state;
     }
 }
 
-
-export const increaseTotalsAC = (price) => {
+export const updateReloadAC = (price) => {
     return {
-        type: INCREASE,
-        payload: price
-    }
-}
-
-export const decreaseTotalAC = (price) => {
-    return {
-        type: DECREASE,
+        type: UPDATE_PRICE,
         payload: price
     }
 }

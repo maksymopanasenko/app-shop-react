@@ -1,9 +1,9 @@
 import './Button.scss';
 import PropTypes from 'prop-types';
 
-function Button({ text, onClick }) {
+function Button({ text, disabled, onClick }) {
     return (
-        <button className='btn' onClick={onClick} >
+        <button className='btn' disabled={disabled} onClick={onClick} >
             {text}
         </button>
     );
