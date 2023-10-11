@@ -1,9 +1,60 @@
 .form {
     display: flex;
     flex-direction: column;
-    align-items: center;        
-    gap: 10px;
-    padding: 20px;
-    background: #776060;
+    align-items: center;
+    width: 370px;
+    padding: 20px 50px;
+    background: #8e7d77;
     border-radius: 5px;
+    color: #fff;
+    
+    &-wrapper {
+        position: relative;
+    }
+
+    &-title {
+        margin-top: 0;
+        font-size: 24px;
+        text-align: center;
+    }
+
+    &-btn {
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        background: #564356;
+        transition: .3s;
+        margin-top: 10px;
+        cursor: pointer;
+    
+        &:hover {
+            background: #3d2f3d;
+        }
+    
+        &:disabled {
+            background: #4c474c;
+        }
+    }
+
+    .field {
+        padding: 8px 10px;
+        border-radius: 5px;
+        border: none;
+        width: 100%;
+
+        &-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 60px;
+        }
+    }
+
+    .error {
+        color: rgb(159, 49, 49);
+        font-weight: 500;
+        font-size: 14px;
+    }
 }

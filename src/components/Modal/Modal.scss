@@ -39,17 +39,6 @@
             cursor: pointer;
         }
         
-        .close__btn {
-            position: absolute;
-            right: 2px;
-            top: 2px;
-            z-index: 5;
-            background-color: transparent;
-            border: none;
-            color: #fff;
-            cursor: pointer;
-        }
-        
         &__btns {
             display: flex;
             justify-content: center;
