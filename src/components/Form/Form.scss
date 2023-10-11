@@ -7,7 +7,7 @@
     background: #8e7d77;
     border-radius: 5px;
     color: #fff;
-    
+
     &-wrapper {
         position: relative;
     }
@@ -16,25 +16,6 @@
         margin-top: 0;
         font-size: 24px;
         text-align: center;
-    }
-
-    &-btn {
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        color: #fff;
-        background: #564356;
-        transition: .3s;
-        margin-top: 10px;
-        cursor: pointer;
-    
-        &:hover {
-            background: #3d2f3d;
-        }
-    
-        &:disabled {
-            background: #4c474c;
-        }
     }
 
     .field {

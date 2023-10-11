@@ -51,7 +51,7 @@ const Layout = () => {
 
     useEffect(() => {
       dispatch(setFavorites(goods));
-      dispatch( setItems(goods));
+      dispatch(setItems(goods));
     }, [goods]);
 
     useEffect(() => {

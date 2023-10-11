@@ -32,7 +32,7 @@ const CardItem = ({card}) => {
       
     const handleToggleFav = () => {
         const fav = favorites.filter(item => item.article !== article);
-        const storedFavs = JSON.parse(localStorage.getItem('favorites'));
+        const storedFavs = JSON.parse(localStorage.getItem('favorites')) || [];
 
         if (fav.length === favorites.length) {
             localStorage.setItem('favorites', JSON.stringify([...storedFavs, article]));  

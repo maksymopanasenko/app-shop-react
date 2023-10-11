@@ -1,11 +1,11 @@
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import './Form.scss';
-import Button from '../Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeModalsAC } from '../../store/reducers/modal.reducer';
 import { clearCartAC } from '../../store/reducers/items.reducer';
 import orderValidationSchema from '../../validation/orderValidationSchema';
 import ButtonClose from '../ButtonClose/ButtonClose';
+import { PatternFormat } from 'react-number-format';
+import './Form.scss';
 
 const CheckoutForm = () => {
     const items = useSelector(state => state.items.items);
@@ -59,11 +59,15 @@ const CheckoutForm = () => {
                             <ErrorMessage className="error" name="address" component="div" />
                         </div>
                         <div className="field-section">
-                            <Field className="field" type="tel" name="phone" placeholder="Phone number"/>
+                            <Field className="field" name='phone'>
+                                {({ field }) => (
+                                    <PatternFormat {...field} className="field" format="+48 (###) #### ###" allowEmptyFormatting mask="_" />
+                                )}
+                            </Field>
                             <ErrorMessage className="error" name="phone" component="div" />
                         </div>
-                        
-                        <input className='form-btn' type="submit" value="Checkout" disabled={isSubmitting}/>
+
+                        <input className='btn' type="submit" value="Checkout" disabled={isSubmitting}/>
                     </Form>
                 </div>
             )}
