@@ -5,15 +5,19 @@ import { modalData } from '../../sources/dataBase';
 import { useDispatch } from 'react-redux';
 import { openModalsAC, setModalAC } from '../../store/reducers/modal.reducer';
 import { addCurrentItemAC } from '../../store/reducers/currentItem.reducer';
+import FavButton from '../buttons/FavButton/FavButton';
 
-const CartItem = ({card}) => {
+const CartItem = ({card, inCart}) => {
     const dispatch = useDispatch();
     const {name, price, color, urlImg} = card;
+
+    const modalId = inCart ? 2 : 1;
+    const btnText = inCart ? "Delete" : "Add to cart";
 
     const openCartModal = () => {
         dispatch(openModalsAC());
 
-        const modalToShow = modalData.find(modal => modal.id === 2);
+        const modalToShow = modalData.find(modal => modal.id === modalId);
         dispatch(setModalAC(modalToShow));
     
         dispatch(addCurrentItemAC(card));
@@ -30,8 +34,10 @@ const CartItem = ({card}) => {
                 </p>
                 <span className='cart-price'>{price + ' PLN'}</span>
             </div>
-            
-            <Button text='Delete' onClick={openCartModal}/>
+            <div className='buttons'>
+                {!inCart && <FavButton card={card}/>}
+                <Button text={btnText} onClick={openCartModal}/>
+            </div>
         </li>
     );
 }

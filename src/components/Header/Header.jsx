@@ -5,6 +5,7 @@ import Navigation from '../Navigation/Navigation';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import './Header.scss';
+import ViewSelect from '../ViewSelect/ViewSelect';
 
 const Header = () => {
     const items = useSelector(state => state.items.items);
@@ -16,6 +17,7 @@ const Header = () => {
                 <div className="header-body">
                     <Navigation />
                     <div className="customer-btns">
+                        <ViewSelect />
                         <Link to='/favorites'>
                             <CustomerButton quantity={favorites.length}>
                                 <Heart />

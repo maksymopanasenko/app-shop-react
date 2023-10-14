@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Modal from "../../components/Modal/Modal";
@@ -11,10 +11,11 @@ import { setItems } from "../../asyncActions/items";
 import { createPortal } from "react-dom";
 import cn from 'classnames';
 import { updateTotalPrice } from "../../asyncActions/totalPrice";
-
-import './Layout.scss';
 import Overlay from "../../components/Overlay/Overlay";
 import CheckoutForm from "../../components/Form/Form";
+import { ViewContex } from "../../contexts/ViewContext";
+
+import './Layout.scss';
 
 const Layout = () => {
     const isOpen = useSelector(state => state.modal.isOpen);
@@ -23,6 +24,7 @@ const Layout = () => {
     const goods = useSelector(state => state.goods.goods);
     const items = useSelector(state => state.items.items);
     const checkout = useSelector(state => state.modal.isCheckout);
+    const [view, setView] = useState('cards');
     const {pathname} = useLocation();
     const dispatch = useDispatch();
 
@@ -60,13 +62,16 @@ const Layout = () => {
 
     return ( 
         <>
-          <Header />
+          <ViewContex.Provider value={{view, setView}}>
+            <Header />
+            
+            <main className="main">
+              <div className={cn('container', {"container-cart": pathname === '/cart'})}>
+                <Outlet />
+              </div>
+            </main>
+          </ViewContex.Provider>
           
-          <main className="main">
-            <div className={cn('container', {"container-cart": pathname === '/cart'})}>
-              <Outlet />
-            </div>
-          </main>
 
           {isOpen && createPortal(
               <Overlay>

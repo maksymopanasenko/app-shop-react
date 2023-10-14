@@ -2,20 +2,26 @@
     margin: 20px auto;
     list-style: none;
     padding: 0 100px;
+    &-goods {
+        min-height: 530px;
+        max-width: calc(270px * 4 + 150px);
+        display: grid;
+        grid-template-columns: repeat(4, 270px);
+        grid-auto-rows: auto;
+        gap: 50px;
+        padding: 0;
+    }
+
+    &-flex {
+        display: flex;
+        flex-direction: column;
+        max-width: 800px;
+        margin-bottom: 0;
+    }
 }
 
 .container-cart.container-cart {
     max-width: 800px;
-}
-
-.goods-list {
-    min-height: 530px;
-    max-width: calc(270px * 4 + 150px);
-    display: grid;
-    grid-template-columns: repeat(4, 270px);
-    grid-auto-rows: auto;
-    gap: 50px;
-    padding: 0;
 }
 
 .no-items {
