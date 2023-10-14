@@ -1,0 +1,130 @@
+[
+    {
+        "name": "Shirt",
+        "price": 70,
+        "urlImg": "https://i.pinimg.com/originals/bf/4d/d2/bf4dd254f576f92a9740ede3659bf227.jpg",
+        "sex":  "M",
+        "article": 1054,
+        "color": "colorfull"
+    },
+    {
+        "name": "Jeans",
+        "price": 140,
+        "urlImg": "https://i.pinimg.com/originals/a2/a0/ff/a2a0ff2bb8b8fa81509fd7e961985f49.jpg",
+        "sex":  "M",
+        "article": 2085,
+        "color": "jeans light"
+    },
+    {
+        "name": "Skirt",
+        "price": 90,
+        "urlImg": "https://i.pinimg.com/originals/51/de/9f/51de9f27e8ebc4bba021d5529bc1b27e.jpg",
+        "sex":  "W",
+        "article": 2175,
+        "color": "brown"
+    },
+    {
+        "name": "T-Shirt",
+        "price": 40,
+        "urlImg": "https://i.pinimg.com/originals/b3/4f/a9/b34fa9877a1ac48dd70c2bf94f9bb851.jpg",
+        "sex":  "M",
+        "article": 3023,
+        "color": "black"
+    },
+    {
+        "name": "Hoodie",
+        "price": 90,
+        "urlImg": "https://i.pinimg.com/originals/bc/38/09/bc38096ee03170d9a637b461012f258c.jpg",
+        "sex":  "M",
+        "article": 4083,
+        "color": "dark green"
+    },
+    {
+        "name": "Vest",
+        "price": 130,
+        "urlImg": "https://i.pinimg.com/originals/f1/8a/1d/f18a1dc834e31741c50af73f9556efde.jpg",
+        "sex":  "M",
+        "article": 5092,
+        "color": "burdeos"
+    },
+    {
+        "name": "Dress",
+        "price": 140,
+        "urlImg": "https://i.pinimg.com/originals/4d/51/a3/4d51a33309cd0111fb10dc26d7a3a61a.jpg",
+        "sex":  "W",
+        "article": 5142,
+        "color": "yellow"
+    },
+    {
+        "name": "Sheath dress",
+        "price": 110,
+        "urlImg": "https://i.pinimg.com/564x/ef/7a/a0/ef7aa007cbba8ed5dd2db0005ff9a198.jpg",
+        "sex":  "W",
+        "article": 6151,
+        "color": "blue"
+    },
+    {
+        "name": "Shorts",
+        "price": 100,
+        "urlImg": "https://i.pinimg.com/originals/a7/47/9a/a7479a3353b5cc4b044ca2300604b718.jpg",
+        "sex":  "M",
+        "article": 6011,
+        "color": "khaki"
+    },
+    {
+        "name": "Jacket",
+        "price": 180,
+        "urlImg": "https://i.pinimg.com/originals/9f/15/d5/9f15d5888612d6e996b1eee15b459f0c.jpg",
+        "sex":  "W",
+        "article": 7193,
+        "color": "light jeans"
+    },
+    {
+        "name": "Coat",
+        "price": 210,
+        "urlImg": "https://i.pinimg.com/originals/ef/01/b3/ef01b3e3ec63a28d7ea6fe7b12fd0198.jpg",
+        "sex":  "M",
+        "article": 7043,
+        "color": "light brown"
+    },
+    {
+        "name": "Sweetshirt",
+        "price": 90,
+        "urlImg": "https://i.pinimg.com/originals/9b/70/ea/9b70eaa49dad792c0409bb2ad2135ad0.jpg",
+        "sex":  "M",
+        "article": 8033,
+        "color": "white"
+    },
+    {
+        "name": "Sweater",
+        "price": 80,
+        "urlImg": "https://i.pinimg.com/originals/e1/3f/f2/e13ff2b4625d7e74340ace00e082e150.jpg",
+        "sex":  "W",
+        "article": 8183,
+        "color": "vanilla"
+    },
+    {
+        "name": "Hat",
+        "price": 40,
+        "urlImg": "https://i.pinimg.com/originals/4c/f6/2d/4cf62d2f294eb627b1710d101ef1faff.jpg",
+        "sex":  "M",
+        "article": 9034,
+        "color": "yellow"
+    },
+    {
+        "name": "Jeans",
+        "price": 120,
+        "urlImg": "https://i.pinimg.com/originals/3f/86/d9/3f86d9d67b4a589af6d9f9ba21f8d84a.jpg",
+        "sex":  "W",
+        "article": 8134,
+        "color": "jeans light"
+    },
+    {
+        "name": "Joggers",
+        "price": 120,
+        "urlImg": "https://i.pinimg.com/originals/a2/e0/0e/a2e00e2cc565548a3152158f176e625d.jpg",
+        "sex":  "M",
+        "article": 1090,
+        "color": "light brown"
+    }
+]
