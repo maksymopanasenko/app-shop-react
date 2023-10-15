@@ -13,6 +13,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />} >
           <Route index element={<Category />} />
+          <Route path='app-shop-react' element={<Category />} />
           <Route path='men' element={<Category />} />
           <Route path='women' element={<Category />} />
           <Route path='favorites' element={<Favorites />} />
