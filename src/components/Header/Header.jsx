@@ -1,11 +1,11 @@
 import { PiShoppingCartSimple as Cart } from 'react-icons/pi';
 import { AiOutlineHeart as Heart } from 'react-icons/ai';
-import CustomerButton from '../CustomerButton/CustomerButton';
+import CustomerButton from '../buttons/CustomerButton/CustomerButton';
 import Navigation from '../Navigation/Navigation';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import './Header.scss';
 import ViewSelect from '../ViewSelect/ViewSelect';
+import './Header.scss';
 
 const Header = () => {
     const items = useSelector(state => state.items.items);

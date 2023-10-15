@@ -1,12 +1,13 @@
-import { useState } from 'react'
-import './CardItem.scss';
-import Button from '../Button/Button';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { openModalsAC, setModalAC } from '../../store/reducers/modal.reducer';
 import { addCurrentItemAC } from '../../store/reducers/currentItem.reducer';
 import { modalData } from '../../sources/dataBase';
 import FavButton from '../buttons/FavButton/FavButton';
+import Button from '../buttons/Button/Button';
+
+import './CardItem.scss';
 
 const CardItem = ({card}) => {
     const dispatch = useDispatch();

@@ -1,6 +1,6 @@
 import GoodList from "../../components/GoodsList/GoodList";
 import CardItem from '../../components/CardItem/CardItem';
-import CartItem from '../../components/CartItem/CartItem';
+import ListItem from '../../components/ListItem/ListItem';
 import { useLocation } from "react-router-dom";
 import filterData from "../../helpers/filterData";
 import { useSelector } from "react-redux";
@@ -14,7 +14,7 @@ const Category = () => {
 
     const filteredData = filterData(pathname, goods);
 
-    const renderedComponent = view === "cards" ? CardItem : CartItem;
+    const renderedComponent = view === "cards" ? CardItem : ListItem;
 
     return <GoodList data={filteredData || goods} RenderItemComponent={renderedComponent}/>
 }

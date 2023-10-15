@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Header from "../../components/Header/Header";
 import Modal from "../../components/Modal/Modal";
-import Button from "../../components/Button/Button";
+import Button from "../../components/buttons/Button/Button";
 import fetchGoods from "../../asyncActions/goods";
 import { useDispatch, useSelector } from "react-redux";
 import { addItemAC, removeItemAC } from "../../store/reducers/items.reducer";

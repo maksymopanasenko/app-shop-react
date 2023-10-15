@@ -1,7 +1,7 @@
-import { AiOutlineClose as CloseBtn } from 'react-icons/ai'
+import React from 'react';
 import PropTypes from 'prop-types';
+import ButtonClose from '../buttons/ButtonClose/ButtonClose';
 import './Modal.scss';
-import ButtonClose from '../ButtonClose/ButtonClose';
 
 function Modal({header, text, children}) {
 

@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import Button from '../Button/Button';
-import './Total.scss';
 import { setCheckoutAC } from '../../store/reducers/modal.reducer';
+import Button from '../buttons/Button/Button';
+
+import './Total.scss';
 
 const Total = () => {
     const dispatch = useDispatch();
@@ -10,7 +11,6 @@ const Total = () => {
     const handleOpenForm = () => {
         dispatch(setCheckoutAC());
     }
-
     return ( 
         <div className="total">
             <div className="text-content">

@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { closeModalsAC } from '../../store/reducers/modal.reducer';
 import { clearCartAC } from '../../store/reducers/items.reducer';
 import orderValidationSchema from '../../validation/orderValidationSchema';
-import ButtonClose from '../ButtonClose/ButtonClose';
+import ButtonClose from '../buttons/ButtonClose/ButtonClose';
 import { PatternFormat } from 'react-number-format';
 import './Form.scss';
 

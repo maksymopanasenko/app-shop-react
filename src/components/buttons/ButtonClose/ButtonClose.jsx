@@ -1,3 +1,4 @@
+import React from 'react';
 import { AiOutlineClose as CloseBtn } from 'react-icons/ai';
 import './ButtonClose.scss';
 

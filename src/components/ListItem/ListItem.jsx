@@ -1,16 +1,15 @@
-import './CartItem.scss';
-import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import { modalData } from '../../sources/dataBase';
 import { useDispatch } from 'react-redux';
 import { openModalsAC, setModalAC } from '../../store/reducers/modal.reducer';
 import { addCurrentItemAC } from '../../store/reducers/currentItem.reducer';
 import FavButton from '../buttons/FavButton/FavButton';
+import Button from '../buttons/Button/Button';
+import './ListItem.scss';
 
 const CartItem = ({card, inCart}) => {
     const dispatch = useDispatch();
     const {name, price, color, urlImg} = card;
-
     const modalId = inCart ? 2 : 1;
     const btnText = inCart ? "Delete" : "Add to cart";
 

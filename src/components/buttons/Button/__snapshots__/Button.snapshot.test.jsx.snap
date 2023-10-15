@@ -1,0 +1,10 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Button snapshot 1`] = `
+<button
+  className="btn"
+  data-testid="Button"
+>
+  Some text
+</button>
+`;
