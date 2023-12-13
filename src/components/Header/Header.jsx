@@ -2,7 +2,7 @@ import { PiShoppingCartSimple as Cart } from 'react-icons/pi';
 import { AiOutlineHeart as Heart } from 'react-icons/ai';
 import CustomerButton from '../buttons/CustomerButton/CustomerButton';
 import Navigation from '../Navigation/Navigation';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ViewSelect from '../ViewSelect/ViewSelect';
 import './Header.scss';
@@ -10,6 +10,7 @@ import './Header.scss';
 const Header = () => {
     const items = useSelector(state => state.items.items);
     const favorites = useSelector(state => state.favorites.favorites);
+    const { pathname } = useLocation();
 
     return (
         <header className='header'>
@@ -17,7 +18,9 @@ const Header = () => {
                 <div className="header-body">
                     <Navigation />
                     <div className="customer-btns">
-                        <ViewSelect />
+                        {pathname !== '/cart' && (
+                            <ViewSelect />
+                        )}
                         <Link to='/favorites'>
                             <CustomerButton quantity={favorites.length}>
                                 <Heart />

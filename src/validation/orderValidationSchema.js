@@ -22,7 +22,7 @@ const orderValidationSchema = () => {
             .max(30, 'Address should contain max. 30 symbols')
             .required('Field is required'),
         phone: Yup.string()
-            .matches(/^\+48 \(\d{3}\) \d{4} \d{3}$/, 'Invalid phone number')
+            .matches(/^\+48 \(\d{3}\) \d{3} \d{3}$/, 'Invalid phone number')
             .required('Field is required'),
     })
 }

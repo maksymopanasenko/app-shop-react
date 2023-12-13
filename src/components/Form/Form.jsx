@@ -27,7 +27,7 @@ const CheckoutForm = () => {
         setTimeout(() => {
             setSubmitting(false);
             
-            localStorage.setItem('items', JSON.stringify([]))
+            localStorage.setItem('items', JSON.stringify([]));
             dispatch(clearCartAC());
             dispatch(closeModalsAC());
         }, 500);
@@ -61,7 +61,7 @@ const CheckoutForm = () => {
                         <div className="field-section">
                             <Field className="field" name='phone'>
                                 {({ field }) => (
-                                    <PatternFormat {...field} className="field" format="+48 (###) #### ###" allowEmptyFormatting mask="_" />
+                                    <PatternFormat {...field} className="field" format="+48 (###) ### ###" allowEmptyFormatting mask="_" />
                                 )}
                             </Field>
                             <ErrorMessage className="error" name="phone" component="div" />
